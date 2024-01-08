@@ -5,5 +5,10 @@ part 'register_state.dart';
 part 'register_cubit.freezed.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
-  RegisterCubit() : super(RegisterState.initial());
+  RegisterCubit() : super(const RegisterState.initial());
+  int activeStep=0;
+  void changeActiveStep(int index){
+    activeStep=index;
+    emit(RegisterState.tabIndexUpdated(newTabIndex: index));
+  }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kafill/core/routing/routers.dart';
 import 'package:kafill/features/login/presentation/login_screen.dart';
+import 'package:kafill/features/register/cubit/register_cubit.dart';
 import 'package:kafill/features/register/presentation/register_screen.dart';
 
 import '../../features/home/presentation/home_screen.dart';
@@ -27,7 +28,10 @@ class AppRouter {
         );
      case Routes.registerScreen:
         return MaterialPageRoute(
-          builder: (_) => const RegisterScreen(),
+          builder: (_) =>  BlocProvider(
+              create: (context)=>getIt<RegisterCubit>(),
+            child: const RegisterScreen(),
+          ),
         );
       default:
         return MaterialPageRoute(

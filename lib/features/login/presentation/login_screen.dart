@@ -56,7 +56,7 @@ class LoginScreen extends StatelessWidget {
               verticalSpace(34),
               KafillButton(
                 onTap:  () {
-                context.pushNamed(Routes.registerScreen);
+
               },
                 text: 'Login',
               ),

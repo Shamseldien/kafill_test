@@ -19,32 +19,38 @@ mixin _$RegisterState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(int newTabIndex) tabIndexUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(int newTabIndex)? tabIndexUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(int newTabIndex)? tabIndexUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(TabIndexUpdated value) tabIndexUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(TabIndexUpdated value)? tabIndexUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(TabIndexUpdated value)? tabIndexUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(int newTabIndex) tabIndexUpdated,
   }) {
     return initial();
   }
@@ -115,6 +122,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(int newTabIndex)? tabIndexUpdated,
   }) {
     return initial?.call();
   }
@@ -123,6 +131,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(int newTabIndex)? tabIndexUpdated,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -135,6 +144,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(TabIndexUpdated value) tabIndexUpdated,
   }) {
     return initial(this);
   }
@@ -143,6 +153,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(TabIndexUpdated value)? tabIndexUpdated,
   }) {
     return initial?.call(this);
   }
@@ -151,6 +162,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(TabIndexUpdated value)? tabIndexUpdated,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -162,4 +174,140 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements RegisterState {
   const factory _Initial() = _$InitialImpl;
+}
+
+/// @nodoc
+abstract class _$$TabIndexUpdatedImplCopyWith<$Res> {
+  factory _$$TabIndexUpdatedImplCopyWith(_$TabIndexUpdatedImpl value,
+          $Res Function(_$TabIndexUpdatedImpl) then) =
+      __$$TabIndexUpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int newTabIndex});
+}
+
+/// @nodoc
+class __$$TabIndexUpdatedImplCopyWithImpl<$Res>
+    extends _$RegisterStateCopyWithImpl<$Res, _$TabIndexUpdatedImpl>
+    implements _$$TabIndexUpdatedImplCopyWith<$Res> {
+  __$$TabIndexUpdatedImplCopyWithImpl(
+      _$TabIndexUpdatedImpl _value, $Res Function(_$TabIndexUpdatedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? newTabIndex = null,
+  }) {
+    return _then(_$TabIndexUpdatedImpl(
+      newTabIndex: null == newTabIndex
+          ? _value.newTabIndex
+          : newTabIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TabIndexUpdatedImpl implements TabIndexUpdated {
+  const _$TabIndexUpdatedImpl({required this.newTabIndex});
+
+  @override
+  final int newTabIndex;
+
+  @override
+  String toString() {
+    return 'RegisterState.tabIndexUpdated(newTabIndex: $newTabIndex)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TabIndexUpdatedImpl &&
+            (identical(other.newTabIndex, newTabIndex) ||
+                other.newTabIndex == newTabIndex));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, newTabIndex);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TabIndexUpdatedImplCopyWith<_$TabIndexUpdatedImpl> get copyWith =>
+      __$$TabIndexUpdatedImplCopyWithImpl<_$TabIndexUpdatedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(int newTabIndex) tabIndexUpdated,
+  }) {
+    return tabIndexUpdated(newTabIndex);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(int newTabIndex)? tabIndexUpdated,
+  }) {
+    return tabIndexUpdated?.call(newTabIndex);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(int newTabIndex)? tabIndexUpdated,
+    required TResult orElse(),
+  }) {
+    if (tabIndexUpdated != null) {
+      return tabIndexUpdated(newTabIndex);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(TabIndexUpdated value) tabIndexUpdated,
+  }) {
+    return tabIndexUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(TabIndexUpdated value)? tabIndexUpdated,
+  }) {
+    return tabIndexUpdated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(TabIndexUpdated value)? tabIndexUpdated,
+    required TResult orElse(),
+  }) {
+    if (tabIndexUpdated != null) {
+      return tabIndexUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TabIndexUpdated implements RegisterState {
+  const factory TabIndexUpdated({required final int newTabIndex}) =
+      _$TabIndexUpdatedImpl;
+
+  int get newTabIndex;
+  @JsonKey(ignore: true)
+  _$$TabIndexUpdatedImplCopyWith<_$TabIndexUpdatedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
