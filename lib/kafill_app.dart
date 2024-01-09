@@ -18,18 +18,19 @@ class KafillApp extends StatelessWidget {
         child: MaterialApp(
           title: 'Kafill App',
           theme: ThemeData(
-
             actionIconTheme: ActionIconThemeData(
               backButtonIconBuilder: (BuildContext context) => IconButton(
                 onPressed: () => Navigator.maybePop(context),
                 icon:const Icon(Icons.arrow_back_ios),
               ),
             ),
+
             appBarTheme: const AppBarTheme(
                 backgroundColor:Colors.transparent,
+                titleSpacing: 0,
                 elevation: 0.0,
                iconTheme: IconThemeData(
-                color: Colors.black
+                color: Colors.black,
               )
             ),
             scaffoldBackgroundColor: Colors.white,

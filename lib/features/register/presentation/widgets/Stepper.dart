@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kafill/core/helpers/app_spacer.dart';
+import 'package:kafill/core/theme/app_text_style.dart';
+import 'package:kafill/core/theme/colors.dart';
 
 class NumberStepper extends StatelessWidget {
   final double width;
@@ -25,15 +28,32 @@ class NumberStepper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(
-        top: 20.0,
-        left: 24.0,
-        right: 24.0,
-      ),
-      width: this.width,
-      child: Row(
-        children: _steps(),
+    return SizedBox(
+      width: width,
+      child: Column(
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              horizontalSpace(15.w),
+              Text(titles[0],style: AppTextStyles.font13GreySemiBold.copyWith(
+                  color:AppColors.green,
+                  fontFamily: "Montserrat"
+
+              ),),
+              horizontalSpace(70.w),
+              Text(titles[1],style: AppTextStyles.font13GreySemiBold.copyWith(
+                  color: curStep>1 ? AppColors.green:AppColors.gray200,
+                  fontFamily: "Montserrat"
+
+              ),)
+            ],
+          ),
+          verticalSpace(12.h),
+          Row(
+            children: _steps(),
+          ),
+        ],
       ),
     );
   }
@@ -42,10 +62,11 @@ class NumberStepper extends StatelessWidget {
     var color;
     if (i + 1 < curStep) {
       color = stepCompleteColor;
-    } else if (i + 1 == curStep)
+    } else if (i + 1 == curStep) {
       color = currentStepColor;
-    else
-      color = Colors.white;
+    } else {
+      color = AppColors.gray200;
+    }
     return color;
   }
 
@@ -53,17 +74,18 @@ class NumberStepper extends StatelessWidget {
     var color;
     if (i + 1 < curStep) {
       color = stepCompleteColor;
-    } else if (i + 1 == curStep)
+    } else if (i + 1 == curStep) {
       color = currentStepColor;
-    else
+    } else {
       color = inactiveColor;
+    }
 
     return color;
   }
 
   getLineColor(i) {
     var color =
-        curStep > i + 1 ? Colors.blue.withOpacity(0.4) : Colors.grey[200];
+        curStep >= i + 1 ? AppColors.green :AppColors.gray200;
     return color;
   }
 
@@ -79,61 +101,49 @@ class NumberStepper extends StatelessWidget {
       if (i != totalSteps - 1) {
         list.add(
           Expanded(
-            flex: 2,
+
             child: Container(
               height: lineWidth,
               color: lineColor,
-
             ),
           ),
         );
       }
       // step circles
       list.add(
-        Stack(
-          clipBehavior: Clip.none,
-          children: [
-
-            Positioned(
-                top: -30,
-                left:i== 0 ?-20:-30,
-                child: Text(titles[i])),
-
-            Container(
-              width: 25.0,
-              height: 25.0,
-              child: getInnerElementOfStepper(i),
-              decoration: new BoxDecoration(
-                color: circleColor,
-                borderRadius: new BorderRadius.all(new Radius.circular(25.0)),
-                border: new Border.all(
-                  color: borderColor,
-                  width: 1.0,
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-      //line before step circles
-      if (i != totalSteps - 1) {
-        list.add(
-          Expanded(
-            child: Container(
-              height: lineWidth,
-              color: lineColor,
+        Container(
+          width: 25.0,
+          height: 25.0,
+          decoration:   BoxDecoration(
+            color: circleColor,
+            borderRadius:   const BorderRadius.all(  Radius.circular(25.0)),
+            border:   Border.all(
+              color: borderColor,
+              width: 1.0,
             ),
           ),
-        );
-      }
-      //line between step circles
-      if (i != totalSteps ) {
+          child: getInnerElementOfStepper(i),
+        ),
+      );
+      //line after step circles
+      if (i != totalSteps - 1) {
         list.add(
           Expanded(
             flex: 2,
             child: Container(
               height: lineWidth,
-              color: lineColor,
+              color:curStep >1  ? lineColor :AppColors.gray200,
+            ),
+          ),
+        );
+      }
+      //line after step circles
+      if (i == totalSteps -1) {
+        list.add(
+          Expanded(
+            child: Container(
+              height: lineWidth,
+              color:  curStep >2  ? lineColor :AppColors.gray200
             ),
           ),
         );
@@ -145,23 +155,27 @@ class NumberStepper extends StatelessWidget {
 
   Widget getInnerElementOfStepper(index) {
     if (index + 1 < curStep) {
-      return Icon(
+      return const Icon(
         Icons.check,
         color: Colors.white,
         size: 16.0,
       );
     } else if (index + 1 == curStep) {
-      return Center(
-        child: Text(
-          '$curStep',
-          style: TextStyle(
-            color: Colors.blue,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'Roboto',
+      return Center(child: CircleAvatar(
+          backgroundColor: AppColors.white,
+          radius: 11,
+          child: Text(
+            '$curStep',
+            style: const TextStyle(
+              color: AppColors.green,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       );
-    } else
+    } else {
       return Container();
+    }
   }
+
 }

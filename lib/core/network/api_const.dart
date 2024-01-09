@@ -1,5 +1,5 @@
 class ApiConstants {
-  static const String apiBaseUrl = "https://vcare.integration25.com/api/";
+  static const String apiBaseUrl = "https://test.kafiil.com/api/test/";
+  static const String dependencies = "dependencies";
 
-  static const String login = "auth/login";
 }

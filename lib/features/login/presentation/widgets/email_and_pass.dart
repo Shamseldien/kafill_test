@@ -18,7 +18,7 @@ class _EmailAndPassState extends State<EmailAndPass> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Email Address",style: AppTextStyles.font12BlackMedium,),
+        Text("Email Address",style: AppTextStyles.font12GreyMedium,),
         verticalSpace(8),
         KafillTextFormField(
            validator: (value){
@@ -27,7 +27,7 @@ class _EmailAndPassState extends State<EmailAndPass> {
 
         ),
         verticalSpace(16),
-        Text("Password",style: AppTextStyles.font12BlackMedium,),
+        Text("Password",style: AppTextStyles.font12GreyMedium,),
         verticalSpace(8),
         KafillTextFormField(
            isObscureText: isObscureText,

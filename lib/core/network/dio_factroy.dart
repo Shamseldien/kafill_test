@@ -14,6 +14,10 @@ class DioFactory {
       dio = Dio();
       dio!
         ..options.connectTimeout = timeOut
+        ..options.headers ={
+        "Accept":"application/json",
+        "Accept-Language":"ar",
+        }
         ..options.receiveTimeout = timeOut;
       addDioInterceptor();
       return dio!;

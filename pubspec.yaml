@@ -63,9 +63,6 @@ dependencies:
   # for adapting screen and font size.
   flutter_screenutil: ^5.9.0
 
-  #steper for complete register
-  easy_stepper: ^0.8.3
-  im_stepper: ^1.0.1+1
 
 
 
@@ -112,6 +109,7 @@ flutter:
      - family: Montserrat
        fonts:
          - asset: assets/fonts/Montserrat-Bold.ttf
+         - asset: assets/fonts/Montserrat-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

@@ -44,12 +44,12 @@ class LoginScreen extends StatelessWidget {
                       Checkbox(
                            fillColor: MaterialStateColor.resolveWith((states) => AppColors.green),
                           value: true, onChanged: (value){}),
-                      Text("Remember me",style: AppTextStyles.font12BlackMedium,)
+                      Text("Remember me",style: AppTextStyles.font12GreyMedium,)
 
                     ],
                   ),
 
-                  Text("Forgot Password?",style: AppTextStyles.font12BlackMedium,)
+                  Text("Forgot Password?",style: AppTextStyles.font12GreyMedium,)
 
                 ],
               ),
