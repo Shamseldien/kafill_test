@@ -7,14 +7,14 @@ import 'package:kafill/features/register/data/models/dependacies_model.dart';
 
 class RegisterType extends StatefulWidget {
   const RegisterType({super.key,required this.types});
-  final DependenciesModel?  types;
+  final List<Type>?  types;
 
   @override
   _RegisterTypeState createState() => _RegisterTypeState();
 }
 
 class _RegisterTypeState extends State<RegisterType> {
-  List<String> radioItems = ['Seller', 'Buyer', 'Both'];
+ // List<String> radioItems = ['Seller', 'Buyer', 'Both'];
   int? selectedValueIndex; // Default selected value is null
   bool showDropdown = true;
 
@@ -39,11 +39,11 @@ class _RegisterTypeState extends State<RegisterType> {
               isExpanded: true,
               value: selectedValueIndex,
               items: [
-                for (int i = 0; i < radioItems.length; i++)
+                for (int i = 0; i < widget.types!.length; i++)
                   DropdownMenuItem<int?>(
                     value: i,
                     child: Text(
-                      radioItems[i],
+                      widget.types![i].label,
                       style: AppTextStyles.font14BlackBold,
                     ),
                   ),
@@ -58,7 +58,7 @@ class _RegisterTypeState extends State<RegisterType> {
         : Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              for (int i = 0; i < radioItems.length; i++)
+              for (int i = 0; i < widget.types!.length; i++)
                 Row(
                   children: [
                     Radio(
@@ -73,7 +73,7 @@ class _RegisterTypeState extends State<RegisterType> {
                       },
                     ),
                     Text(
-                      radioItems[i],
+                      widget.types![i].label,
                       style: AppTextStyles.font14BlackBold,
                     ),
                     horizontalSpace(5.w)

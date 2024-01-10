@@ -11,27 +11,35 @@ class RegisterError extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
-          height: 32.h,
-          color:AppColors.red.withOpacity(0.1),
-          width: double.infinity,
-          child: Row(
-            children: [
-              horizontalSpace(20.w),
-              Image.asset(AppAssets.error,width: 20.w,),
-              horizontalSpace(8.w),
-              Text("Fill the required fields",style: AppTextStyles.font12GreyMedium.copyWith(
-                  color:AppColors.red
-              ),)
+    return  BlocBuilder<RegisterCubit,RegisterState>(
+         builder: (context,state) {
+         if(context.read<RegisterCubit>().areFieldsEmpty){
+           return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              height: 32.h,
+              color:AppColors.red.withOpacity(0.1),
+              width: double.infinity,
+              child: Row(
+                children: [
+                  horizontalSpace(20.w),
+                  Image.asset(AppAssets.error,width: 20.w,),
+                  horizontalSpace(8.w),
+                  Text("Fill the required fields",style: AppTextStyles.font12GreyMedium.copyWith(
+                      color:AppColors.red
+                  ),)
 
-            ],
-          ),
-        ),
-        verticalSpace(20.h),
-      ],
+                ],
+              ),
+            ),
+            verticalSpace(20.h),
+          ],
+        );
+        }else{
+          return const SizedBox.shrink();
+        }
+         }
     );
   }
 }

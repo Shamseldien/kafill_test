@@ -20,30 +20,33 @@ mixin _$RegisterState<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(T data) success,
+    required TResult Function(T? data) success,
     required TResult Function(String error) error,
     required TResult Function() checkFieldsState,
     required TResult Function(int newTabIndex) tabIndexUpdated,
+    required TResult Function(List<Tag> tags) registerSkillsUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(T data)? success,
+    TResult? Function(T? data)? success,
     TResult? Function(String error)? error,
     TResult? Function()? checkFieldsState,
     TResult? Function(int newTabIndex)? tabIndexUpdated,
+    TResult? Function(List<Tag> tags)? registerSkillsUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(T data)? success,
+    TResult Function(T? data)? success,
     TResult Function(String error)? error,
     TResult Function()? checkFieldsState,
     TResult Function(int newTabIndex)? tabIndexUpdated,
+    TResult Function(List<Tag> tags)? registerSkillsUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +58,8 @@ mixin _$RegisterState<T> {
     required TResult Function(Error<T> value) error,
     required TResult Function(CheckFieldsState<T> value) checkFieldsState,
     required TResult Function(TabIndexUpdated<T> value) tabIndexUpdated,
+    required TResult Function(RegisterSkillsUpdated<T> value)
+        registerSkillsUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +70,7 @@ mixin _$RegisterState<T> {
     TResult? Function(Error<T> value)? error,
     TResult? Function(CheckFieldsState<T> value)? checkFieldsState,
     TResult? Function(TabIndexUpdated<T> value)? tabIndexUpdated,
+    TResult? Function(RegisterSkillsUpdated<T> value)? registerSkillsUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +81,7 @@ mixin _$RegisterState<T> {
     TResult Function(Error<T> value)? error,
     TResult Function(CheckFieldsState<T> value)? checkFieldsState,
     TResult Function(TabIndexUpdated<T> value)? tabIndexUpdated,
+    TResult Function(RegisterSkillsUpdated<T> value)? registerSkillsUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -138,10 +145,11 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(T data) success,
+    required TResult Function(T? data) success,
     required TResult Function(String error) error,
     required TResult Function() checkFieldsState,
     required TResult Function(int newTabIndex) tabIndexUpdated,
+    required TResult Function(List<Tag> tags) registerSkillsUpdated,
   }) {
     return initial();
   }
@@ -151,10 +159,11 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(T data)? success,
+    TResult? Function(T? data)? success,
     TResult? Function(String error)? error,
     TResult? Function()? checkFieldsState,
     TResult? Function(int newTabIndex)? tabIndexUpdated,
+    TResult? Function(List<Tag> tags)? registerSkillsUpdated,
   }) {
     return initial?.call();
   }
@@ -164,10 +173,11 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(T data)? success,
+    TResult Function(T? data)? success,
     TResult Function(String error)? error,
     TResult Function()? checkFieldsState,
     TResult Function(int newTabIndex)? tabIndexUpdated,
+    TResult Function(List<Tag> tags)? registerSkillsUpdated,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -185,6 +195,8 @@ class _$InitialImpl<T> implements _Initial<T> {
     required TResult Function(Error<T> value) error,
     required TResult Function(CheckFieldsState<T> value) checkFieldsState,
     required TResult Function(TabIndexUpdated<T> value) tabIndexUpdated,
+    required TResult Function(RegisterSkillsUpdated<T> value)
+        registerSkillsUpdated,
   }) {
     return initial(this);
   }
@@ -198,6 +210,7 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult? Function(Error<T> value)? error,
     TResult? Function(CheckFieldsState<T> value)? checkFieldsState,
     TResult? Function(TabIndexUpdated<T> value)? tabIndexUpdated,
+    TResult? Function(RegisterSkillsUpdated<T> value)? registerSkillsUpdated,
   }) {
     return initial?.call(this);
   }
@@ -211,6 +224,7 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult Function(Error<T> value)? error,
     TResult Function(CheckFieldsState<T> value)? checkFieldsState,
     TResult Function(TabIndexUpdated<T> value)? tabIndexUpdated,
+    TResult Function(RegisterSkillsUpdated<T> value)? registerSkillsUpdated,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -264,10 +278,11 @@ class _$LoadingImpl<T> implements Loading<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(T data) success,
+    required TResult Function(T? data) success,
     required TResult Function(String error) error,
     required TResult Function() checkFieldsState,
     required TResult Function(int newTabIndex) tabIndexUpdated,
+    required TResult Function(List<Tag> tags) registerSkillsUpdated,
   }) {
     return loading();
   }
@@ -277,10 +292,11 @@ class _$LoadingImpl<T> implements Loading<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(T data)? success,
+    TResult? Function(T? data)? success,
     TResult? Function(String error)? error,
     TResult? Function()? checkFieldsState,
     TResult? Function(int newTabIndex)? tabIndexUpdated,
+    TResult? Function(List<Tag> tags)? registerSkillsUpdated,
   }) {
     return loading?.call();
   }
@@ -290,10 +306,11 @@ class _$LoadingImpl<T> implements Loading<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(T data)? success,
+    TResult Function(T? data)? success,
     TResult Function(String error)? error,
     TResult Function()? checkFieldsState,
     TResult Function(int newTabIndex)? tabIndexUpdated,
+    TResult Function(List<Tag> tags)? registerSkillsUpdated,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -311,6 +328,8 @@ class _$LoadingImpl<T> implements Loading<T> {
     required TResult Function(Error<T> value) error,
     required TResult Function(CheckFieldsState<T> value) checkFieldsState,
     required TResult Function(TabIndexUpdated<T> value) tabIndexUpdated,
+    required TResult Function(RegisterSkillsUpdated<T> value)
+        registerSkillsUpdated,
   }) {
     return loading(this);
   }
@@ -324,6 +343,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult? Function(Error<T> value)? error,
     TResult? Function(CheckFieldsState<T> value)? checkFieldsState,
     TResult? Function(TabIndexUpdated<T> value)? tabIndexUpdated,
+    TResult? Function(RegisterSkillsUpdated<T> value)? registerSkillsUpdated,
   }) {
     return loading?.call(this);
   }
@@ -337,6 +357,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult Function(Error<T> value)? error,
     TResult Function(CheckFieldsState<T> value)? checkFieldsState,
     TResult Function(TabIndexUpdated<T> value)? tabIndexUpdated,
+    TResult Function(RegisterSkillsUpdated<T> value)? registerSkillsUpdated,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -356,7 +377,7 @@ abstract class _$$SuccessImplCopyWith<T, $Res> {
           _$SuccessImpl<T> value, $Res Function(_$SuccessImpl<T>) then) =
       __$$SuccessImplCopyWithImpl<T, $Res>;
   @useResult
-  $Res call({T data});
+  $Res call({T? data});
 }
 
 /// @nodoc
@@ -376,7 +397,7 @@ class __$$SuccessImplCopyWithImpl<T, $Res>
       freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as T,
+              as T?,
     ));
   }
 }
@@ -384,10 +405,10 @@ class __$$SuccessImplCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$SuccessImpl<T> implements Success<T> {
-  const _$SuccessImpl(this.data);
+  const _$SuccessImpl([this.data]);
 
   @override
-  final T data;
+  final T? data;
 
   @override
   String toString() {
@@ -417,10 +438,11 @@ class _$SuccessImpl<T> implements Success<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(T data) success,
+    required TResult Function(T? data) success,
     required TResult Function(String error) error,
     required TResult Function() checkFieldsState,
     required TResult Function(int newTabIndex) tabIndexUpdated,
+    required TResult Function(List<Tag> tags) registerSkillsUpdated,
   }) {
     return success(data);
   }
@@ -430,10 +452,11 @@ class _$SuccessImpl<T> implements Success<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(T data)? success,
+    TResult? Function(T? data)? success,
     TResult? Function(String error)? error,
     TResult? Function()? checkFieldsState,
     TResult? Function(int newTabIndex)? tabIndexUpdated,
+    TResult? Function(List<Tag> tags)? registerSkillsUpdated,
   }) {
     return success?.call(data);
   }
@@ -443,10 +466,11 @@ class _$SuccessImpl<T> implements Success<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(T data)? success,
+    TResult Function(T? data)? success,
     TResult Function(String error)? error,
     TResult Function()? checkFieldsState,
     TResult Function(int newTabIndex)? tabIndexUpdated,
+    TResult Function(List<Tag> tags)? registerSkillsUpdated,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -464,6 +488,8 @@ class _$SuccessImpl<T> implements Success<T> {
     required TResult Function(Error<T> value) error,
     required TResult Function(CheckFieldsState<T> value) checkFieldsState,
     required TResult Function(TabIndexUpdated<T> value) tabIndexUpdated,
+    required TResult Function(RegisterSkillsUpdated<T> value)
+        registerSkillsUpdated,
   }) {
     return success(this);
   }
@@ -477,6 +503,7 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult? Function(Error<T> value)? error,
     TResult? Function(CheckFieldsState<T> value)? checkFieldsState,
     TResult? Function(TabIndexUpdated<T> value)? tabIndexUpdated,
+    TResult? Function(RegisterSkillsUpdated<T> value)? registerSkillsUpdated,
   }) {
     return success?.call(this);
   }
@@ -490,6 +517,7 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult Function(Error<T> value)? error,
     TResult Function(CheckFieldsState<T> value)? checkFieldsState,
     TResult Function(TabIndexUpdated<T> value)? tabIndexUpdated,
+    TResult Function(RegisterSkillsUpdated<T> value)? registerSkillsUpdated,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -500,9 +528,9 @@ class _$SuccessImpl<T> implements Success<T> {
 }
 
 abstract class Success<T> implements RegisterState<T> {
-  const factory Success(final T data) = _$SuccessImpl<T>;
+  const factory Success([final T? data]) = _$SuccessImpl<T>;
 
-  T get data;
+  T? get data;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<T, _$SuccessImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -574,10 +602,11 @@ class _$ErrorImpl<T> implements Error<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(T data) success,
+    required TResult Function(T? data) success,
     required TResult Function(String error) error,
     required TResult Function() checkFieldsState,
     required TResult Function(int newTabIndex) tabIndexUpdated,
+    required TResult Function(List<Tag> tags) registerSkillsUpdated,
   }) {
     return error(this.error);
   }
@@ -587,10 +616,11 @@ class _$ErrorImpl<T> implements Error<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(T data)? success,
+    TResult? Function(T? data)? success,
     TResult? Function(String error)? error,
     TResult? Function()? checkFieldsState,
     TResult? Function(int newTabIndex)? tabIndexUpdated,
+    TResult? Function(List<Tag> tags)? registerSkillsUpdated,
   }) {
     return error?.call(this.error);
   }
@@ -600,10 +630,11 @@ class _$ErrorImpl<T> implements Error<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(T data)? success,
+    TResult Function(T? data)? success,
     TResult Function(String error)? error,
     TResult Function()? checkFieldsState,
     TResult Function(int newTabIndex)? tabIndexUpdated,
+    TResult Function(List<Tag> tags)? registerSkillsUpdated,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -621,6 +652,8 @@ class _$ErrorImpl<T> implements Error<T> {
     required TResult Function(Error<T> value) error,
     required TResult Function(CheckFieldsState<T> value) checkFieldsState,
     required TResult Function(TabIndexUpdated<T> value) tabIndexUpdated,
+    required TResult Function(RegisterSkillsUpdated<T> value)
+        registerSkillsUpdated,
   }) {
     return error(this);
   }
@@ -634,6 +667,7 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult? Function(Error<T> value)? error,
     TResult? Function(CheckFieldsState<T> value)? checkFieldsState,
     TResult? Function(TabIndexUpdated<T> value)? tabIndexUpdated,
+    TResult? Function(RegisterSkillsUpdated<T> value)? registerSkillsUpdated,
   }) {
     return error?.call(this);
   }
@@ -647,6 +681,7 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult Function(Error<T> value)? error,
     TResult Function(CheckFieldsState<T> value)? checkFieldsState,
     TResult Function(TabIndexUpdated<T> value)? tabIndexUpdated,
+    TResult Function(RegisterSkillsUpdated<T> value)? registerSkillsUpdated,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -706,10 +741,11 @@ class _$CheckFieldsStateImpl<T> implements CheckFieldsState<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(T data) success,
+    required TResult Function(T? data) success,
     required TResult Function(String error) error,
     required TResult Function() checkFieldsState,
     required TResult Function(int newTabIndex) tabIndexUpdated,
+    required TResult Function(List<Tag> tags) registerSkillsUpdated,
   }) {
     return checkFieldsState();
   }
@@ -719,10 +755,11 @@ class _$CheckFieldsStateImpl<T> implements CheckFieldsState<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(T data)? success,
+    TResult? Function(T? data)? success,
     TResult? Function(String error)? error,
     TResult? Function()? checkFieldsState,
     TResult? Function(int newTabIndex)? tabIndexUpdated,
+    TResult? Function(List<Tag> tags)? registerSkillsUpdated,
   }) {
     return checkFieldsState?.call();
   }
@@ -732,10 +769,11 @@ class _$CheckFieldsStateImpl<T> implements CheckFieldsState<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(T data)? success,
+    TResult Function(T? data)? success,
     TResult Function(String error)? error,
     TResult Function()? checkFieldsState,
     TResult Function(int newTabIndex)? tabIndexUpdated,
+    TResult Function(List<Tag> tags)? registerSkillsUpdated,
     required TResult orElse(),
   }) {
     if (checkFieldsState != null) {
@@ -753,6 +791,8 @@ class _$CheckFieldsStateImpl<T> implements CheckFieldsState<T> {
     required TResult Function(Error<T> value) error,
     required TResult Function(CheckFieldsState<T> value) checkFieldsState,
     required TResult Function(TabIndexUpdated<T> value) tabIndexUpdated,
+    required TResult Function(RegisterSkillsUpdated<T> value)
+        registerSkillsUpdated,
   }) {
     return checkFieldsState(this);
   }
@@ -766,6 +806,7 @@ class _$CheckFieldsStateImpl<T> implements CheckFieldsState<T> {
     TResult? Function(Error<T> value)? error,
     TResult? Function(CheckFieldsState<T> value)? checkFieldsState,
     TResult? Function(TabIndexUpdated<T> value)? tabIndexUpdated,
+    TResult? Function(RegisterSkillsUpdated<T> value)? registerSkillsUpdated,
   }) {
     return checkFieldsState?.call(this);
   }
@@ -779,6 +820,7 @@ class _$CheckFieldsStateImpl<T> implements CheckFieldsState<T> {
     TResult Function(Error<T> value)? error,
     TResult Function(CheckFieldsState<T> value)? checkFieldsState,
     TResult Function(TabIndexUpdated<T> value)? tabIndexUpdated,
+    TResult Function(RegisterSkillsUpdated<T> value)? registerSkillsUpdated,
     required TResult orElse(),
   }) {
     if (checkFieldsState != null) {
@@ -860,10 +902,11 @@ class _$TabIndexUpdatedImpl<T> implements TabIndexUpdated<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(T data) success,
+    required TResult Function(T? data) success,
     required TResult Function(String error) error,
     required TResult Function() checkFieldsState,
     required TResult Function(int newTabIndex) tabIndexUpdated,
+    required TResult Function(List<Tag> tags) registerSkillsUpdated,
   }) {
     return tabIndexUpdated(newTabIndex);
   }
@@ -873,10 +916,11 @@ class _$TabIndexUpdatedImpl<T> implements TabIndexUpdated<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(T data)? success,
+    TResult? Function(T? data)? success,
     TResult? Function(String error)? error,
     TResult? Function()? checkFieldsState,
     TResult? Function(int newTabIndex)? tabIndexUpdated,
+    TResult? Function(List<Tag> tags)? registerSkillsUpdated,
   }) {
     return tabIndexUpdated?.call(newTabIndex);
   }
@@ -886,10 +930,11 @@ class _$TabIndexUpdatedImpl<T> implements TabIndexUpdated<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(T data)? success,
+    TResult Function(T? data)? success,
     TResult Function(String error)? error,
     TResult Function()? checkFieldsState,
     TResult Function(int newTabIndex)? tabIndexUpdated,
+    TResult Function(List<Tag> tags)? registerSkillsUpdated,
     required TResult orElse(),
   }) {
     if (tabIndexUpdated != null) {
@@ -907,6 +952,8 @@ class _$TabIndexUpdatedImpl<T> implements TabIndexUpdated<T> {
     required TResult Function(Error<T> value) error,
     required TResult Function(CheckFieldsState<T> value) checkFieldsState,
     required TResult Function(TabIndexUpdated<T> value) tabIndexUpdated,
+    required TResult Function(RegisterSkillsUpdated<T> value)
+        registerSkillsUpdated,
   }) {
     return tabIndexUpdated(this);
   }
@@ -920,6 +967,7 @@ class _$TabIndexUpdatedImpl<T> implements TabIndexUpdated<T> {
     TResult? Function(Error<T> value)? error,
     TResult? Function(CheckFieldsState<T> value)? checkFieldsState,
     TResult? Function(TabIndexUpdated<T> value)? tabIndexUpdated,
+    TResult? Function(RegisterSkillsUpdated<T> value)? registerSkillsUpdated,
   }) {
     return tabIndexUpdated?.call(this);
   }
@@ -933,6 +981,7 @@ class _$TabIndexUpdatedImpl<T> implements TabIndexUpdated<T> {
     TResult Function(Error<T> value)? error,
     TResult Function(CheckFieldsState<T> value)? checkFieldsState,
     TResult Function(TabIndexUpdated<T> value)? tabIndexUpdated,
+    TResult Function(RegisterSkillsUpdated<T> value)? registerSkillsUpdated,
     required TResult orElse(),
   }) {
     if (tabIndexUpdated != null) {
@@ -950,4 +999,179 @@ abstract class TabIndexUpdated<T> implements RegisterState<T> {
   @JsonKey(ignore: true)
   _$$TabIndexUpdatedImplCopyWith<T, _$TabIndexUpdatedImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RegisterSkillsUpdatedImplCopyWith<T, $Res> {
+  factory _$$RegisterSkillsUpdatedImplCopyWith(
+          _$RegisterSkillsUpdatedImpl<T> value,
+          $Res Function(_$RegisterSkillsUpdatedImpl<T>) then) =
+      __$$RegisterSkillsUpdatedImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({List<Tag> tags});
+}
+
+/// @nodoc
+class __$$RegisterSkillsUpdatedImplCopyWithImpl<T, $Res>
+    extends _$RegisterStateCopyWithImpl<T, $Res, _$RegisterSkillsUpdatedImpl<T>>
+    implements _$$RegisterSkillsUpdatedImplCopyWith<T, $Res> {
+  __$$RegisterSkillsUpdatedImplCopyWithImpl(
+      _$RegisterSkillsUpdatedImpl<T> _value,
+      $Res Function(_$RegisterSkillsUpdatedImpl<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tags = null,
+  }) {
+    return _then(_$RegisterSkillsUpdatedImpl<T>(
+      tags: null == tags
+          ? _value._tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as List<Tag>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RegisterSkillsUpdatedImpl<T> implements RegisterSkillsUpdated<T> {
+  const _$RegisterSkillsUpdatedImpl({required final List<Tag> tags})
+      : _tags = tags;
+
+  final List<Tag> _tags;
+  @override
+  List<Tag> get tags {
+    if (_tags is EqualUnmodifiableListView) return _tags;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tags);
+  }
+
+  @override
+  String toString() {
+    return 'RegisterState<$T>.registerSkillsUpdated(tags: $tags)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RegisterSkillsUpdatedImpl<T> &&
+            const DeepCollectionEquality().equals(other._tags, _tags));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tags));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RegisterSkillsUpdatedImplCopyWith<T, _$RegisterSkillsUpdatedImpl<T>>
+      get copyWith => __$$RegisterSkillsUpdatedImplCopyWithImpl<T,
+          _$RegisterSkillsUpdatedImpl<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(T? data) success,
+    required TResult Function(String error) error,
+    required TResult Function() checkFieldsState,
+    required TResult Function(int newTabIndex) tabIndexUpdated,
+    required TResult Function(List<Tag> tags) registerSkillsUpdated,
+  }) {
+    return registerSkillsUpdated(tags);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(T? data)? success,
+    TResult? Function(String error)? error,
+    TResult? Function()? checkFieldsState,
+    TResult? Function(int newTabIndex)? tabIndexUpdated,
+    TResult? Function(List<Tag> tags)? registerSkillsUpdated,
+  }) {
+    return registerSkillsUpdated?.call(tags);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(T? data)? success,
+    TResult Function(String error)? error,
+    TResult Function()? checkFieldsState,
+    TResult Function(int newTabIndex)? tabIndexUpdated,
+    TResult Function(List<Tag> tags)? registerSkillsUpdated,
+    required TResult orElse(),
+  }) {
+    if (registerSkillsUpdated != null) {
+      return registerSkillsUpdated(tags);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial<T> value) initial,
+    required TResult Function(Loading<T> value) loading,
+    required TResult Function(Success<T> value) success,
+    required TResult Function(Error<T> value) error,
+    required TResult Function(CheckFieldsState<T> value) checkFieldsState,
+    required TResult Function(TabIndexUpdated<T> value) tabIndexUpdated,
+    required TResult Function(RegisterSkillsUpdated<T> value)
+        registerSkillsUpdated,
+  }) {
+    return registerSkillsUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial<T> value)? initial,
+    TResult? Function(Loading<T> value)? loading,
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(Error<T> value)? error,
+    TResult? Function(CheckFieldsState<T> value)? checkFieldsState,
+    TResult? Function(TabIndexUpdated<T> value)? tabIndexUpdated,
+    TResult? Function(RegisterSkillsUpdated<T> value)? registerSkillsUpdated,
+  }) {
+    return registerSkillsUpdated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial<T> value)? initial,
+    TResult Function(Loading<T> value)? loading,
+    TResult Function(Success<T> value)? success,
+    TResult Function(Error<T> value)? error,
+    TResult Function(CheckFieldsState<T> value)? checkFieldsState,
+    TResult Function(TabIndexUpdated<T> value)? tabIndexUpdated,
+    TResult Function(RegisterSkillsUpdated<T> value)? registerSkillsUpdated,
+    required TResult orElse(),
+  }) {
+    if (registerSkillsUpdated != null) {
+      return registerSkillsUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RegisterSkillsUpdated<T> implements RegisterState<T> {
+  const factory RegisterSkillsUpdated({required final List<Tag> tags}) =
+      _$RegisterSkillsUpdatedImpl<T>;
+
+  List<Tag> get tags;
+  @JsonKey(ignore: true)
+  _$$RegisterSkillsUpdatedImplCopyWith<T, _$RegisterSkillsUpdatedImpl<T>>
+      get copyWith => throw _privateConstructorUsedError;
 }

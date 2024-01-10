@@ -10,18 +10,20 @@ class RegisterStepper extends StatelessWidget {
   const RegisterStepper({super.key});
   @override
   Widget build(BuildContext context) {
-    return NumberStepper(
-      totalSteps: 2,
-      width: double.infinity,
-      curStep: context.read<RegisterCubit>().activeStep,
-      stepCompleteColor: AppColors.green,
-      currentStepColor: AppColors.green,
-      inactiveColor: AppColors.gray200,
-      lineWidth: 2.7,
-      titles: const [
-        "Register",
-        "Complete Data",
-      ],
+    return BlocBuilder<RegisterCubit,RegisterState>(
+      builder:(context,staet)=> NumberStepper(
+        totalSteps: 2,
+        width: double.infinity,
+        curStep: context.read<RegisterCubit>().activeStep,
+        stepCompleteColor: AppColors.green,
+        currentStepColor: AppColors.green,
+        inactiveColor: AppColors.gray200,
+        lineWidth: 2.7,
+        titles: const [
+          "Register",
+          "Complete Data",
+        ],
+      ),
     );
 
   }

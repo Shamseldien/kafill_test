@@ -19,8 +19,8 @@ class RegisterCubit extends Cubit<RegisterState> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
   final PageController registerPageController = PageController(initialPage: 0);
-   DependenciesModel? dependenciesModel;
-
+  DependenciesModel? dependenciesData;
+  List<Tag> selectedSkills = [];
 
 
   void changeActiveStep(int index){
@@ -47,24 +47,27 @@ class RegisterCubit extends Cubit<RegisterState> {
           passwordController.text.isEmpty ||
           confirmPasswordController.text.isEmpty){
         areFieldsEmpty = true;
-        emit(const RegisterState.checkFieldsState());
+        emit( const RegisterState.checkFieldsState());
       }else{
         areFieldsEmpty = false;
+
+        //activeStep = 2;
+        registerPageController.jumpToPage(1);
+        changeActiveStep(2);
       }
     } else if ( activeStep == 2) {
+     // changeActiveStep(3);
+      activeStep = 3;
 
     }
-
-
-
+ 
   }
 
   void getDependencies() async {
     emit(const RegisterState.loading());
-
     final response = await _registerRepo.getDependencies();
     response.when(success: (dependenciesResponse) {
-      dependenciesModel=dependenciesResponse;
+      dependenciesData = dependenciesResponse;
        emit(RegisterState.success(dependenciesResponse));
     }, failure: (error) {
       emit(RegisterState.error(error:error));
@@ -72,5 +75,15 @@ class RegisterCubit extends Cubit<RegisterState> {
     );
   }
 
+  void addSelectedSkill(Tag skill) {
+    if (!selectedSkills.contains(skill))
+      {
+        selectedSkills.add(skill);
+      }else{
+      selectedSkills.remove(skill);
+    }
+      emit( RegisterState.registerSkillsUpdated(tags:selectedSkills));
+
+  }
 
 }

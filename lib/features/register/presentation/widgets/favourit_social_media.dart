@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kafill/core/helpers/app_assets.dart';
 import 'package:kafill/core/helpers/app_spacer.dart';
+import 'package:kafill/core/theme/app_text_style.dart';
 import 'package:kafill/core/theme/colors.dart';
+import 'package:kafill/features/register/data/models/dependacies_model.dart';
 
 class FavoriteSocialMediaScreen extends StatefulWidget {
-  const FavoriteSocialMediaScreen({super.key});
+  const FavoriteSocialMediaScreen({super.key,this.socialMedia= const []});
 
+  final List<SocialMedia> socialMedia;
   @override
   _FavoriteSocialMediaScreenState createState() =>
       _FavoriteSocialMediaScreenState();
@@ -14,45 +17,53 @@ class FavoriteSocialMediaScreen extends StatefulWidget {
 
 class _FavoriteSocialMediaScreenState
     extends State<FavoriteSocialMediaScreen> {
-  bool facebookSelected = false;
-  bool twitterSelected = false;
-  bool linkedInSelected = false;
+  Map<String, bool> selectedSocialMedia = {};
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text("Favourite Social Media",style: AppTextStyles.font12GreyMedium,),
+        verticalSpace(16),
 
-          buildSocialMediaRow('Facebook', AppAssets.facebook, facebookSelected,
-                  (value) {
-                setState(() {
-                  facebookSelected = value!;
-                });
-              }),
-          buildSocialMediaRow('Twitter', AppAssets.twitter, twitterSelected,
-                  (value) {
-                setState(() {
-                  twitterSelected = value!;
-                });
-              }),
-          buildSocialMediaRow('LinkedIn',AppAssets.linkedIn, linkedInSelected,
-                  (value) {
-                setState(() {
-                  linkedInSelected = value!;
-                });
-              }),
+        ListView.builder(
+          shrinkWrap: true,
+          itemCount: widget.socialMedia.length,
+          itemBuilder: (context, index) => buildSocialMediaRow(
+            widget.socialMedia[index].label,
+            widget.socialMedia[index].value,
+            selectedSocialMedia.containsKey(widget.socialMedia[index].value)
+                ? selectedSocialMedia[widget.socialMedia[index].value]!
+                : false,
+                (value) {
+              setState(() {
+                selectedSocialMedia[widget.socialMedia[index].value] = value!;
+              });
+            },
+          ),
+        ),
 
-        ],
-      ),
+      ],
     );
   }
 
   Widget buildSocialMediaRow(
       String title, String icon, bool selected, ValueChanged<bool?> onChanged) {
+
+    String _icon='';
+    switch(icon){
+      case 'facebook':
+        _icon = AppAssets.facebook;
+        break;
+      case 'x':
+        _icon = AppAssets.twitter;
+        break;
+      case 'instagram':
+        _icon = AppAssets.instagram;
+        break;
+    }
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -67,7 +78,7 @@ class _FavoriteSocialMediaScreenState
           onChanged: onChanged,
         ),
         horizontalSpace(12.w),
-        Image.asset(icon,width: 22.w,),
+        Image.asset(_icon,width: 22.w,),
         horizontalSpace(8.w),
         Text(title),
       ],

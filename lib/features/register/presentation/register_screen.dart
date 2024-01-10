@@ -6,13 +6,14 @@ import 'package:kafill/core/shared_widgets/kafill_button.dart';
 import 'package:kafill/core/shared_widgets/kafill_text_form_field.dart';
 import 'package:kafill/core/theme/app_text_style.dart';
 import 'package:kafill/features/register/cubit/register_cubit.dart';
+import 'package:kafill/features/register/data/models/dependacies_model.dart';
  import 'package:kafill/features/register/presentation/widgets/first_and_last_name.dart';
 import 'package:kafill/features/register/presentation/widgets/password_and_confirm_password.dart';
-import 'package:kafill/features/register/presentation/widgets/register_loading_listner.dart';
- import 'package:kafill/features/register/presentation/widgets/register_type.dart';
+  import 'package:kafill/features/register/presentation/widgets/register_type.dart';
 
 class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
+  const RegisterScreen({Key? key,required this.dependenciesModel}) : super(key: key);
+  final DependenciesModel dependenciesModel ;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -35,7 +36,7 @@ class RegisterScreen extends StatelessWidget {
           verticalSpace(16.h),
           Text("User Type", style: AppTextStyles.font12GreyMedium),
           verticalSpace(8.h),
-          RegisterType(types: context.read<RegisterCubit>().dependenciesModel!),
+          RegisterType(types:dependenciesModel.data.types),
           verticalSpace(56.h),
           Align(
             alignment: AlignmentDirectional.bottomEnd,
@@ -43,19 +44,13 @@ class RegisterScreen extends StatelessWidget {
               width: 160.w,
               onTap: () {
                 context.read<RegisterCubit>().checkFieldsStatus();
-                if (!context.read<RegisterCubit>().areFieldsEmpty) {
-                  if (context.read<RegisterCubit>().activeStep == 1) {
-                    context.read<RegisterCubit>().changeActiveStep(2);
-                    context.read<RegisterCubit>().registerPageController.jumpToPage(1);
-                  } else if (context.read<RegisterCubit>().activeStep == 2) {
-                    context.read<RegisterCubit>().changeActiveStep(3);
-                  }
-                 }
+
+
               },
               text: 'Next',
             ),
           ),
-          const RegisterLoadingListener()
+         // const RegisterLoadingListener()
         ],
       ),
     );
