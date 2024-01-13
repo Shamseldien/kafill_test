@@ -6,6 +6,7 @@ import 'package:kafill/core/helpers/app_spacer.dart';
 import 'package:kafill/core/theme/app_text_style.dart';
 import 'package:kafill/core/theme/colors.dart';
 import 'package:kafill/features/register/cubit/register_cubit.dart';
+import 'package:kafill/features/register/cubit/register_state.dart';
 class RegisterError extends StatelessWidget {
   const RegisterError({super.key});
 

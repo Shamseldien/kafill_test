@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kafill/core/theme/colors.dart';
 import 'package:kafill/features/register/cubit/register_cubit.dart';
+import 'package:kafill/features/register/cubit/register_state.dart';
 import 'package:kafill/features/register/presentation/widgets/Stepper.dart';
 
 class RegisterStepper extends StatelessWidget {

@@ -12,9 +12,8 @@ import 'package:kafill/features/register/presentation/widgets/password_and_confi
   import 'package:kafill/features/register/presentation/widgets/register_type.dart';
 
 class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({Key? key,required this.dependenciesModel}) : super(key: key);
-  final DependenciesModel dependenciesModel ;
-  @override
+  const RegisterScreen({Key? key,}) : super(key: key);
+   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
@@ -36,7 +35,7 @@ class RegisterScreen extends StatelessWidget {
           verticalSpace(16.h),
           Text("User Type", style: AppTextStyles.font12GreyMedium),
           verticalSpace(8.h),
-          RegisterType(types:dependenciesModel.data.types),
+          RegisterType(types: context.read<RegisterCubit>().dependenciesData!.data.types),
           verticalSpace(56.h),
           Align(
             alignment: AlignmentDirectional.bottomEnd,

@@ -92,12 +92,12 @@ class NumberStepper extends StatelessWidget {
   List<Widget> _steps() {
     var list = <Widget>[];
     for (int i = 0; i < totalSteps; i++) {
-      //colors according to state
+
 
       var circleColor = getCircleColor(i);
       var borderColor = getBorderColor(i);
       var lineColor = getLineColor(i);
-      //line before step circles
+
       if (i != totalSteps - 1) {
         list.add(
           Expanded(
@@ -109,7 +109,7 @@ class NumberStepper extends StatelessWidget {
           ),
         );
       }
-      // step circles
+
       list.add(
         Container(
           width: 25.0,
@@ -125,7 +125,7 @@ class NumberStepper extends StatelessWidget {
           child: getInnerElementOfStepper(i),
         ),
       );
-      //line after step circles
+
       if (i != totalSteps - 1) {
         list.add(
           Expanded(
@@ -137,7 +137,7 @@ class NumberStepper extends StatelessWidget {
           ),
         );
       }
-      //line after step circles
+
       if (i == totalSteps -1) {
         list.add(
           Expanded(

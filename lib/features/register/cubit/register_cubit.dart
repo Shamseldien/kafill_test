@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kafill/features/register/data/models/dependacies_model.dart';
+import 'package:kafill/features/register/cubit/register_state.dart';
+ import 'package:kafill/features/register/data/models/dependacies_model.dart';
 import 'package:kafill/features/register/data/repositories/register_repo.dart';
 
-part 'register_state.dart';
-part 'register_cubit.freezed.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   final RegisterRepo _registerRepo;
   RegisterCubit(this._registerRepo) : super(const RegisterState.initial());
   int activeStep=1;
   bool areFieldsEmpty = false;
+  double salary = 1000.0;
   final registerValidationKey = GlobalKey<FormState>();
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
@@ -84,6 +83,37 @@ class RegisterCubit extends Cubit<RegisterState> {
     }
       emit( RegisterState.registerSkillsUpdated(tags:selectedSkills));
 
+  }
+
+  void addTag(Tag tag) {
+    if (!selectedSkills.contains(tag)) {
+      selectedSkills.add(tag);
+
+      print(selectedSkills);
+    }
+  }
+
+  void removeTag(Tag tag) {
+    if (selectedSkills.contains(tag)) {
+      selectedSkills.remove(tag);
+      emit(RegisterState.registerSkillsUpdated(tags: selectedSkills));
+    }
+  }
+
+  void showSkillsDialog(BuildContext context,widget) {
+    showDialog(
+        context: context,
+        builder: (context)=>widget);
+  }
+
+  void increment() {
+    salary++;
+    emit(const RegisterState.updateSalary( ));
+  }
+
+  void decrement() {
+    salary --;
+    emit(const RegisterState.updateSalary());
   }
 
 }
