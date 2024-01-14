@@ -64,8 +64,8 @@ dependencies:
   flutter_screenutil: ^5.9.0
   #for multi choice skills
   infinite_scroll_pagination: ^4.0.0
-  chips_choice: ^3.0.1
-
+  #for image picker
+  image_picker: ^1.0.7
 
 
 

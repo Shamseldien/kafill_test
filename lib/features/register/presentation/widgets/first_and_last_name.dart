@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kafill/core/helpers/app_regex.dart';
 import 'package:kafill/core/helpers/app_spacer.dart';
 import 'package:kafill/core/shared_widgets/kafill_text_form_field.dart';
 import 'package:kafill/core/theme/app_text_style.dart';
@@ -24,8 +25,11 @@ class FirstAndLastName extends StatelessWidget {
               KafillTextFormField(
                 controller: context.read<RegisterCubit>().firstNameController,
                 validator: (String? value) {
-
-                },
+                  if(value!.isEmpty || !AppRegex.hasMinNameLength(value)) {
+                    return "Please enter valid name";
+                  }
+                  return null;
+                  },
               ),
             ],
           ),
@@ -42,7 +46,12 @@ class FirstAndLastName extends StatelessWidget {
               verticalSpace(8.h),
               KafillTextFormField(
                 controller: context.read<RegisterCubit>().lastNameController,
-                validator: (String? value) {  },
+                validator: (String? value) {
+                  if(value!.isEmpty || !AppRegex.hasMinNameLength(value)) {
+                    return "Please enter valid name";
+                  }
+                  return null;
+                },
               ),
             ],
           ),

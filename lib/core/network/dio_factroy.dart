@@ -16,7 +16,7 @@ class DioFactory {
         ..options.headers ={
         "Accept":"application/json",
         "Accept-Language":"ar",
-        }
+         }
         ..options.receiveTimeout = timeOut;
       addDioInterceptor();
       return dio!;

@@ -16,42 +16,62 @@ class RegisterLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RegisterCubit, RegisterState>(
-        builder: (context, state) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text(
-                "Register",
-                style: AppTextStyles.font18DarkBold,
+    return BlocConsumer<RegisterCubit, RegisterState>(
+      listener: (context, state) {
+        if(state is LoadingState){
+          showDialog(
+            context: context,
+            builder: (context) => const Center(
+              child: CircularProgressIndicator(
+                color: Colors.green,
               ),
             ),
-            body: state is! Error && state is! Loading
-                ? Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const RegisterError(),
-                  const RegisterStepper(),
-                  verticalSpace(25.w),
-                  Expanded(
-                    child: PageView(
-                      physics: const NeverScrollableScrollPhysics(),
-                      controller: context
-                          .read<RegisterCubit>()
-                          .registerPageController,
-                      children: const [
-                        RegisterScreen(),
+          );
+        }
+      },
+        builder: (context, state) {
+          return WillPopScope(
+            onWillPop: () async {
+              if (context.read<RegisterCubit>().registerPageController.page!.toInt() == 0) {
+                context.read<RegisterCubit>().handelBackButton();
+                return true;
+              } else {
+                context.read<RegisterCubit>().handelBackButton();
+                return false;
+              }
+            },
+            child: Scaffold(
+              appBar: AppBar(
+                title: Text(
+                  "Register",
+                  style: AppTextStyles.font18DarkBold,
+                ),
+              ),
+              body:  Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const RegisterError(),
+                    const RegisterStepper(),
+                    verticalSpace(25.w),
+                    Expanded(
+                      child: PageView(
+                        physics: const NeverScrollableScrollPhysics(),
+                        controller: context.read<RegisterCubit>().registerPageController,
+                        children: const [
+                          RegisterScreen(),
                         CompleteDateScreen(),
 
 
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            )
-                : const Center(child: CircularProgressIndicator(),),
+                  ],
+                ),
+              )
+
+            ),
           );
         }
     );

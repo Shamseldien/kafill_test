@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:kafill/features/register/data/models/dependacies_model.dart';
+import 'package:kafill/features/register/data/models/register_request_body.dart';
+import 'package:kafill/features/register/data/models/register_response.dart';
 import 'package:retrofit/retrofit.dart';
 
 import 'api_const.dart';
@@ -14,4 +18,10 @@ abstract class ApiServices {
   Future<DependenciesModel> getDependencies();
 
 
+
+  @POST(ApiConstants.register)
+  Future<RegisterResponseBody> register(
+      @Part() FormData fileFormData,
+      @Body() RegisterRequestBody registerRequestBody,
+      );
 }

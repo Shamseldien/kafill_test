@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kafill/core/helpers/app_regex.dart';
 import 'package:kafill/core/helpers/app_spacer.dart';
 import 'package:kafill/core/shared_widgets/kafill_text_form_field.dart';
 import 'package:kafill/core/theme/app_text_style.dart';
@@ -40,8 +41,11 @@ class _RegisterPassAndConfirmPassState extends State<RegisterPassAndConfirmPass>
               color: AppColors.gray300,
             ),
           ),
-          validator: (value){
-
+          validator: (String? value) {
+            if (value!.isEmpty || !AppRegex.isPasswordValid(value)) {
+              return 'Please enter valid Password';
+            }
+            return null;
           },
 
         ),
@@ -63,8 +67,11 @@ class _RegisterPassAndConfirmPassState extends State<RegisterPassAndConfirmPass>
 
             ),
           ),
-          validator: (value){
-
+          validator: (String? value) {
+            if (value!.isEmpty ||context.read<RegisterCubit>().confirmPasswordController.text != context.read<RegisterCubit>().passwordController.text ) {
+              return 'Password doesn\'t match';
+            }
+            return null;
           },
 
         ),

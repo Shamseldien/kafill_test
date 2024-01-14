@@ -4,6 +4,7 @@ import 'package:kafill/core/routing/routers.dart';
 import 'package:kafill/features/login/presentation/login_screen.dart';
 import 'package:kafill/features/register/cubit/register_cubit.dart';
 import 'package:kafill/features/register/presentation/register_layout.dart';
+import 'package:kafill/features/splash/splash_screen.dart';
 
 import '../../features/home/presentation/home_screen.dart';
 import '../../features/login/cubit/login_cubit.dart';
@@ -15,12 +16,13 @@ class AppRouter {
     final arguments = settings.arguments;
 
     switch (settings.name) {
-      case Routes.loginScreen:
+      case Routes.splashScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<LoginCubit>(),
-            child: const LoginScreen(),
-          ),
+          builder: (_) => const SplashScreen(),
+        );
+        case Routes.loginScreen:
+        return MaterialPageRoute(
+          builder: (_) => const LoginScreen(),
         );
       case Routes.homeScreen:
         return MaterialPageRoute(
@@ -28,10 +30,7 @@ class AppRouter {
         );
      case Routes.registerScreen:
         return MaterialPageRoute(
-          builder: (_) =>  BlocProvider(
-              create: (context)=>getIt<RegisterCubit>()..getDependencies(),
-            child: const RegisterLayout(),
-          ),
+          builder: (_) =>  const RegisterLayout(),
         );
       default:
         return MaterialPageRoute(

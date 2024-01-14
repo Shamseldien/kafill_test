@@ -7,8 +7,7 @@ import 'package:kafill/core/shared_widgets/kafill_text_form_field.dart';
 import 'package:kafill/core/theme/app_text_style.dart';
 import 'package:kafill/core/theme/colors.dart';
 import 'package:kafill/features/register/presentation/widgets/favourit_social_media.dart';
-import 'package:kafill/features/register/presentation/widgets/select_birth_date.dart';
-import 'package:kafill/features/register/presentation/widgets/select_gender.dart';
+ import 'package:kafill/features/register/presentation/widgets/select_gender.dart';
 class WhoAmI extends StatelessWidget {
   const WhoAmI({super.key});
 
@@ -63,7 +62,7 @@ class WhoAmI extends StatelessWidget {
           verticalSpace(16.h),
           Text("Birth Date",style: AppTextStyles.font12GreyMedium,),
           verticalSpace(8.h),
-          MyDatePicker(),
+
           verticalSpace(16.h),
 
           const GenderSelectionScreen(),
@@ -128,7 +127,7 @@ class WhoAmI extends StatelessWidget {
           verticalSpace(16.h),
           Text("Favourite Social Media",style: AppTextStyles.font12GreyMedium,),
           verticalSpace(8.h),
-          const FavoriteSocialMediaScreen(),
+          const FavoriteSocialMediaScreen(socialMedia: [],),
           verticalSpace(25.h),
           KafillButton(text: 'submit', onTap: (){}),
           verticalSpace(25.h),

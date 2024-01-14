@@ -14,7 +14,7 @@ class RegisterError extends StatelessWidget {
   Widget build(BuildContext context) {
     return  BlocBuilder<RegisterCubit,RegisterState>(
          builder: (context,state) {
-         if(context.read<RegisterCubit>().areFieldsEmpty){
+         if(context.read<RegisterCubit>().registerScreenFieldIsEmpty){
            return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
