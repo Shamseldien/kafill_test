@@ -4,5 +4,5 @@ part 'api_res.freezed.dart';
 @Freezed()
 abstract class ApiResults<T> with _$ApiResults<T> {
   const factory ApiResults.success(T data) = Success<T>;
-  const factory ApiResults.failure(String errorHandler) = Failure<T>;
+  const factory ApiResults.failure(T error) = Failure<T>;
 }

@@ -1,4 +1,6 @@
 
+import 'package:kafill/features/register/data/models/register_request_error.dart';
+
 abstract class RegisterState {}
 
 class Initial extends RegisterState {}
@@ -13,9 +15,9 @@ class SuccessState<T> extends RegisterState {
 }
 
 class ErrorState extends RegisterState {
-  final String error;
-
-  ErrorState(this.error);
+  dynamic error;
+  final RegisterRequestError? registerRequestError;
+  ErrorState({this.error,this.registerRequestError});
 }
 
 class CheckFieldsState extends RegisterState {}

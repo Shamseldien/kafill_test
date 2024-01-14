@@ -24,7 +24,7 @@ class RegisterType extends StatelessWidget {
             Row(
               children: [
                 Radio(
-                  value: i,
+                  value: i+1,
                   activeColor: AppColors.green,
                    groupValue: context.read<RegisterCubit>().selectedUserType,
                   onChanged: (int? newValue) {

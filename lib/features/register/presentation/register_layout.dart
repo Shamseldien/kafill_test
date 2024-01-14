@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kafill/core/dependency_injecion/di.dart';
+import 'package:kafill/core/helpers/app_navigation_extintion.dart';
 import 'package:kafill/core/helpers/app_spacer.dart';
 import 'package:kafill/core/theme/app_text_style.dart';
 import 'package:kafill/features/register/cubit/register_cubit.dart';
@@ -26,6 +27,60 @@ class RegisterLayout extends StatelessWidget {
                 color: Colors.green,
               ),
             ),
+          );
+        }
+
+        if (state is ErrorState) {
+          context.pop();
+
+          showDialog(
+            context: context,
+            builder: (context) =>  AlertDialog(
+              actions: [
+                TextButton(onPressed: (){
+                  context.pop();
+                }, child:Text("OK"))
+              ],
+              content: SizedBox(
+                height: 200.h,
+                width: 300.w,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: state.registerRequestError!.errors.length,
+                  itemBuilder: (context, index) {
+                    String key = state.registerRequestError!.errors.keys.toList()[index];
+                    List<String> value =state.registerRequestError!.errors[key]!;
+
+                    return ListTile(
+                      title: Text('$key: ${value.join(", ")}'),
+
+                    );
+                  },
+                ),
+              ),
+            ),
+
+          );
+        }
+
+        if (state is SuccessState) {
+          context.pop();
+
+          showDialog(
+            context: context,
+            builder: (context) =>  AlertDialog(
+              actions: [
+                TextButton(onPressed: (){
+                  context.pop();
+                }, child:Text("OK"))
+              ],
+              content: SizedBox(
+                height: 200.h,
+                width: 300.w,
+                child: Text(state.data),
+              ),
+            ),
+
           );
         }
       },
@@ -62,8 +117,6 @@ class RegisterLayout extends StatelessWidget {
                         children: const [
                           RegisterScreen(),
                         CompleteDateScreen(),
-
-
                         ],
                       ),
                     ),

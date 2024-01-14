@@ -17,11 +17,11 @@ class SplashCubit extends Cubit<SplashState> {
   Future<void> getDependencies() async {
     emit(SplashLoadingState());
     final response = await _splashRepo.getDependencies();
+
     response.when(success: (dependenciesResponse) {
       dependenciesData = dependenciesResponse;
-
       emit(SplashSuccessState());
-    }, failure: (error) {
+    }, failure: (error,) {
       emit(SplashErrorState( error));
     },
     );

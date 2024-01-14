@@ -29,7 +29,7 @@ class AppRegex {
     return RegExp(r'^.{1,50}$').hasMatch(text);
   }
   static bool hasMinAboutLength(String text) {
-    return RegExp(r'^.{1,10}$').hasMatch(text);
+    return RegExp(r'^.{10,50}$').hasMatch(text);
   }
 
 }

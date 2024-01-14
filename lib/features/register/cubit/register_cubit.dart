@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:kafill/features/register/cubit/register_state.dart';
  import 'package:kafill/features/register/data/models/dependacies_model.dart';
 import 'package:kafill/features/register/data/models/register_request_body.dart';
+import 'package:kafill/features/register/data/models/register_request_error.dart';
 import 'package:kafill/features/register/data/repositories/register_repo.dart';
 
 
@@ -52,18 +55,21 @@ class RegisterCubit extends Cubit<RegisterState> {
   }
 
   bool checkFieldsStatus() {
+    print("selectedUserType");
+    print(selectedUserType);
+
     if (activeStep == 1) {
       if (firstNameController.text.isEmpty ||
           lastNameController.text.isEmpty ||
           emailController.text.isEmpty ||
           passwordController.text.isEmpty ||
+          selectedUserType==null||
           confirmPasswordController.text.isEmpty){
         registerScreenFieldIsEmpty = true;
 
       }else{
         registerScreenFieldIsEmpty = false;
         if(registerValidationKey.currentState!.validate()){
-
           registerPageController.jumpToPage(1);
           changeActiveStep(2);
         }
@@ -78,17 +84,11 @@ class RegisterCubit extends Cubit<RegisterState> {
        ){
         registerScreenFieldIsEmpty = true;
        }else{
-        registerScreenFieldIsEmpty = false;
-
-        if(completeRegisterValidationKey.currentState!.validate()){
-          registerUser();
+          registerScreenFieldIsEmpty = false;
           changeActiveStep(3);
-        }
-       // changeActiveStep(3);
 
       }
     }
-
 
     emit(CheckFieldsState());
 
@@ -191,7 +191,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     try {
       profilePic = await picker.pickImage(source: ImageSource.gallery);
     } catch (e) {
-      emit(ErrorState(e.toString()));
+      emit(ErrorState(error:e.toString()));
     }
 
     emit(ChangeProfilePic());
@@ -204,33 +204,46 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   void registerUser()async{
     emit(LoadingState());
-
-    FormData formData = FormData.fromMap({
-      'avatar': await MultipartFile.fromFile(profilePic!.path, filename: profilePic!.name),
-    });
-
-
     RegisterRequestBody registerRequestBody =RegisterRequestBody(
-        fName: firstNameController.text,
-        lName: lastNameController.text,
-        email: emailController.text,
-        password: passwordController.text,
-        passwordConfirmation: confirmPasswordController.text,
-        tags: selectedSkills.map((e) => e.value).toList(),
-        socialMedia: selectedSocialMedia.map((e) => e.value).toList(),
-        salary: salary,
-        type: selectedUserType!,
-        birthDate: selectedDate,
-        gender: selectedGender == 0 ? false : true ,
+      fName: firstNameController.text,
+      lName: lastNameController.text,
+      email: emailController.text,
+      password: passwordController.text,
+      passwordConfirmation: confirmPasswordController.text,
+      tags: jsonEncode(selectedSkills.map((e) => e.value).toList()),
+      socialMedia: jsonEncode(selectedSocialMedia.map((e) => e.value).toList()),
+      salary: salary,
+      type: selectedUserType!,
+      birthDate: selectedDate,
+      about: aboutController.text,
+      gender: selectedGender == 0 ? false : true ,
+    );
+    final file = await MultipartFile.fromFile(profilePic!.path);
+
+    FormData formData = FormData.fromMap(registerRequestBody.toJson());
+    formData.files.add(MapEntry('avatar',file));
+
+
+
+    final response =   await _registerRepo.registerUser(formData, );
+    response.when(
+        success: (registerResponseBody) {
+            emit(SuccessState(registerResponseBody));
+     }, failure: ( error ) {
+
+
+          if(error is RegisterRequestError){
+            RegisterRequestError d = error;
+            emit(ErrorState(registerRequestError: d ));
+
+          }else{
+            emit(ErrorState(error:error.toString()));
+          }
+    },
 
     );
-
-   await _registerRepo.registerUser(formData,registerRequestBody).then((value) {
-      emit(SuccessState(value));
-    }).catchError((e){
-      emit(ErrorState(e.toString()));
-    });
-
   }
+
+
 
 }
