@@ -3,10 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kafill/core/dependency_injecion/di.dart';
+import 'package:kafill/features/home/cubit/home_cubit.dart';
 import 'package:kafill/features/login/cubit/login_cubit.dart';
 import 'package:kafill/features/register/cubit/register_cubit.dart';
 import 'package:kafill/features/register/presentation/register_layout.dart';
 import 'package:kafill/features/splash/cubit/splash_cubit.dart';
+import 'package:kafill/features/whoAmI/cubit/who_am_i_cubit.dart';
 
 import 'core/routing/app_router.dart';
 import 'core/routing/routers.dart';
@@ -37,6 +39,13 @@ class _KafillAppState extends State<KafillApp> {
 
            BlocProvider<SplashCubit>(
               create: (context)=>getIt<SplashCubit>()..getDependencies(),
+            ),
+
+           BlocProvider<HomeCubit>(
+              create: (context)=>getIt<HomeCubit>()),
+
+           BlocProvider<WhoAmICubit>(
+              create: (context)=>getIt<WhoAmICubit>(),
             )
           ],
           child: MaterialApp(

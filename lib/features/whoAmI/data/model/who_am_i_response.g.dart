@@ -1,25 +1,23 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'login_response.dart';
+part of 'who_am_i_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) =>
-    LoginResponse(
+WhoAmIResponse _$WhoAmIResponseFromJson(Map<String, dynamic> json) =>
+    WhoAmIResponse(
       status: json['status'] as int,
       success: json['success'] as bool,
       data: UserData.fromJson(json['data'] as Map<String, dynamic>),
-      accessToken: json['access_token'] as String,
     );
 
-Map<String, dynamic> _$LoginResponseToJson(LoginResponse instance) =>
+Map<String, dynamic> _$WhoAmIResponseToJson(WhoAmIResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'success': instance.success,
       'data': instance.data,
-      'access_token': instance.accessToken,
     };
 
 UserData _$UserDataFromJson(Map<String, dynamic> json) => UserData(

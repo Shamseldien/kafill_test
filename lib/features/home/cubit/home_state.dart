@@ -1,6 +1,13 @@
-part of 'home_cubit.dart';
+class HomeState {
+  final int currentIndex;
 
-@freezed
-class HomeState with _$HomeState {
-  const factory HomeState.initial() = _Initial;
+  HomeState({required this.currentIndex});
+
+  HomeState copyWith({
+    int? currentIndex,
+  }) {
+    return HomeState(
+      currentIndex: currentIndex ?? this.currentIndex,
+    );
+  }
 }

@@ -66,6 +66,8 @@ dependencies:
   infinite_scroll_pagination: ^4.0.0
   #for image picker
   image_picker: ^1.0.7
+  #for caching
+  shared_preferences: ^2.2.2
 
 
 

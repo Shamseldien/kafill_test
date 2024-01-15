@@ -1,6 +1,9 @@
-part of 'who_am_i_cubit.dart';
 
-@freezed
-class WhoAmIState with _$WhoAmIState {
-  const factory WhoAmIState.initial() = _Initial;
+abstract class WhoAmIState {}
+class WhoAmIStateInitial extends WhoAmIState {}
+class WhoAmIStateLoading extends WhoAmIState {}
+class WhoAmIStateSuccess extends WhoAmIState {}
+class WhoAmIStateError extends WhoAmIState {
+  final String message;
+  WhoAmIStateError({required this.message});
 }

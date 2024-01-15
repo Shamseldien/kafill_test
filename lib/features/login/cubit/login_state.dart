@@ -1,6 +1,14 @@
-part of 'login_cubit.dart';
+import 'package:kafill/features/login/data/models/login_request_error.dart';
+import 'package:kafill/features/login/data/models/login_response.dart';
 
-@freezed
-class LoginState with _$LoginState {
-  const factory LoginState.initial() = _Initial;
+abstract class LoginState {}
+class LoginInitial extends LoginState {}
+class LoginLoading extends LoginState {}
+class LoginSuccess extends LoginState {
+  LoginResponse loginResponse;
+  LoginSuccess(this.loginResponse);
+}
+class LoginError extends LoginState {
+  final LoginRequestError loginRequestError;
+  LoginError(this.loginRequestError);
 }

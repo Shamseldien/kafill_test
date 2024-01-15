@@ -13,14 +13,15 @@ class RegisterRequestBody {
   final String password;
   @JsonKey(name: 'password_confirmation')
   final String passwordConfirmation;
-  final String tags;
-  @JsonKey(name: 'favorite_social_media')
-  final String socialMedia;
+  @JsonKey(name: 'tags[]')
+  final List<String> tags;
+  @JsonKey(name: 'favorite_social_media[]')
+  final List<String> socialMedia;
   final int salary;
   final int type;
   @JsonKey(name: 'birth_date')
   final String birthDate;
-  final bool gender;
+  final int gender;
 
 
   RegisterRequestBody(

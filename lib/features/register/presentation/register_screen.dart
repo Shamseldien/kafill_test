@@ -7,11 +7,9 @@ import 'package:kafill/core/shared_widgets/kafill_button.dart';
 import 'package:kafill/core/shared_widgets/kafill_text_form_field.dart';
 import 'package:kafill/core/theme/app_text_style.dart';
 import 'package:kafill/features/register/cubit/register_cubit.dart';
-import 'package:kafill/features/register/cubit/register_state.dart';
-import 'package:kafill/features/register/data/models/dependacies_model.dart';
- import 'package:kafill/features/register/presentation/widgets/first_and_last_name.dart';
+import 'package:kafill/features/register/presentation/widgets/first_and_last_name.dart';
 import 'package:kafill/features/register/presentation/widgets/password_and_confirm_password.dart';
-  import 'package:kafill/features/register/presentation/widgets/register_type.dart';
+import 'package:kafill/features/register/presentation/widgets/register_type.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({Key? key,}) : super(key: key);

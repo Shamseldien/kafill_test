@@ -7,4 +7,9 @@ class SplashErrorState  extends SplashState{
   SplashErrorState(this.error);
 
 }
-class SplashSuccessState  extends SplashState{}
+class SplashSuccessState  extends SplashState{
+  String? userToken;
+  SplashSuccessState({this.userToken});
+}
+
+class GetTokenState  extends SplashState{}

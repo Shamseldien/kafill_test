@@ -1,25 +1,23 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'login_response.g.dart';
+
+part 'who_am_i_response.g.dart';
 
 @JsonSerializable()
-class LoginResponse {
+class WhoAmIResponse {
   final int status;
   final bool success;
   final UserData data;
-  @JsonKey(name: 'access_token')
-  final String accessToken;
 
-  LoginResponse({
+  WhoAmIResponse({
     required this.status,
     required this.success,
     required this.data,
-    required this.accessToken,
   });
 
-  factory LoginResponse.fromJson(Map<String, dynamic> json) =>
-      _$LoginResponseFromJson(json);
+  factory WhoAmIResponse.fromJson(Map<String, dynamic> json) =>
+      _$WhoAmIResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$LoginResponseToJson(this);
+  Map<String, dynamic> toJson() => _$WhoAmIResponseToJson(this);
 }
 
 @JsonSerializable()
@@ -40,6 +38,7 @@ class UserData {
   final int gender;
   final UserType type;
   final String avatar;
+
 
   UserData({
     required this.id,
@@ -83,6 +82,7 @@ class UserType {
   final String name;
   @JsonKey(name: 'nice_name')
   final String niceName;
+
 
   UserType({
     required this.code,

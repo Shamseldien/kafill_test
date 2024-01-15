@@ -14,6 +14,8 @@ class KafillTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final Function(String?) validator;
   final int maxLines;
+  final bool isEnabled;
+  final String? initialValue;
   const KafillTextFormField({
     super.key,
     this.contentPadding,
@@ -24,7 +26,9 @@ class KafillTextFormField extends StatelessWidget {
     this.backgroundColor,
     this.controller,
     required this.validator,
-    this.maxLines = 1
+    this.maxLines = 1,
+    this.isEnabled = true,
+    this.initialValue,
   });
 
   @override
@@ -32,6 +36,8 @@ class KafillTextFormField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       maxLines: maxLines,
+      initialValue: initialValue,
+      style: AppTextStyles.font16Grey800Medium,
       decoration: InputDecoration(
         contentPadding: contentPadding ??
             EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
@@ -51,6 +57,7 @@ class KafillTextFormField extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(16.0),
             ),
+
         errorBorder: OutlineInputBorder(
           borderSide: const BorderSide(
             color: Colors.red,
@@ -58,6 +65,13 @@ class KafillTextFormField extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(16.0),
         ),
+        disabledBorder:OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: AppColors.gray50,
+            width: 1.3,
+          ),
+          borderRadius: BorderRadius.circular(16.0),
+        ) ,
         focusedErrorBorder: OutlineInputBorder(
           borderSide: const BorderSide(
             color: Colors.red,
@@ -69,6 +83,7 @@ class KafillTextFormField extends StatelessWidget {
         fillColor: backgroundColor ?? AppColors.gray50,
         filled: true,
       ),
+      enabled: isEnabled,
       obscureText: isObscureText ?? false,
        validator: (value) {
         return validator(value);

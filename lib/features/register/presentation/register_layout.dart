@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kafill/core/dependency_injecion/di.dart';
 import 'package:kafill/core/helpers/app_navigation_extintion.dart';
 import 'package:kafill/core/helpers/app_spacer.dart';
+import 'package:kafill/core/routing/routers.dart';
 import 'package:kafill/core/theme/app_text_style.dart';
 import 'package:kafill/features/register/cubit/register_cubit.dart';
 import 'package:kafill/features/register/cubit/register_state.dart';
@@ -65,22 +66,25 @@ class RegisterLayout extends StatelessWidget {
 
         if (state is SuccessState) {
           context.pop();
-
+          context.pushNamedAndRemoveUntil(Routes.loginScreen,  predicate: (route) => false);
           showDialog(
             context: context,
-            builder: (context) =>  AlertDialog(
+            builder: (context) => AlertDialog(
               actions: [
                 TextButton(onPressed: (){
                   context.pop();
+                  context.read<RegisterCubit>().disposeControllers();
                 }, child:Text("OK"))
               ],
-              content: SizedBox(
-                height: 200.h,
-                width: 300.w,
-                child: Text(state.data),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Center(
+                    child: Text(state.data!["status"] == 200 ?"successfully, now you can login": "some error occurred"),
+                  ),
+                ],
               ),
             ),
-
           );
         }
       },

@@ -182,6 +182,8 @@ class RegisterCubit extends Cubit<RegisterState> {
       selectedGender = null;
       profilePic=null;
       changeActiveStep(1);
+    }else{
+      disposeControllers();
     }
 
     emit(TabIndexUpdated(activeStep));
@@ -204,19 +206,23 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   void registerUser()async{
     emit(LoadingState());
+
+    List<String> _skillsList = selectedSkills.map((e) => e.value.toString()).toList();
+    List<String> _socialMediaList = selectedSocialMedia.map((e) => e.value).toList();
+
     RegisterRequestBody registerRequestBody =RegisterRequestBody(
       fName: firstNameController.text,
       lName: lastNameController.text,
       email: emailController.text,
       password: passwordController.text,
       passwordConfirmation: confirmPasswordController.text,
-      tags: jsonEncode(selectedSkills.map((e) => e.value).toList()),
-      socialMedia: jsonEncode(selectedSocialMedia.map((e) => e.value).toList()),
+      tags: _skillsList,
+      socialMedia: _socialMediaList,
       salary: salary,
       type: selectedUserType!,
       birthDate: selectedDate,
       about: aboutController.text,
-      gender: selectedGender == 0 ? false : true ,
+      gender: selectedGender! ,
     );
     final file = await MultipartFile.fromFile(profilePic!.path);
 
@@ -242,6 +248,24 @@ class RegisterCubit extends Cubit<RegisterState> {
     },
 
     );
+  }
+
+  void disposeControllers() {
+    profilePic=null;
+    firstNameController.clear();
+    lastNameController.clear();
+    emailController.clear();
+    passwordController.clear();
+    confirmPasswordController.clear();
+   selectedSkills=[];
+     selectedSocialMedia=[];
+     salary = 100;
+     selectedUserType = null;
+     selectedDate = DateFormat('yyyy-MM-dd').format(DateTime(2000));
+     selectedDate = DateFormat('yyyy-MM-dd').format(DateTime(2000));
+      aboutController.clear();
+     selectedGender = null;
+     activeStep=0;
   }
 
 
